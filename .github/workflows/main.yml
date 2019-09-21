@@ -17,13 +17,3 @@ jobs:
       with:
         php-version: 7.3
         extension-csv: mbstring, xdebug #optional
-    - name: Check PHP and Composer Version 
-      run: php -v && composer -V
-    - name: Check PHP Extensions
-      run: php -m
-    - name: Composer install
-      run: composer install
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
