@@ -21,5 +21,7 @@ jobs:
       run: php -m
     - name: Composer install
       run: composer install
-    - name: Run a multi-line script
+    - name: Show Environment
       run: env |sort
+    - name: Show Installed Packages
+      run: apt list --installed
