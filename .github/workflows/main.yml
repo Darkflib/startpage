@@ -18,7 +18,7 @@ jobs:
         php-version: 7.3
         extension-csv: mbstring, xdebug #optional
     - name: Check PHP and Composer Version 
-        run: php -v && composer -V
+      run: php -v && composer -V
     - name: Check PHP Extensions
       run: php -m
     - name: Composer install
