@@ -1,0 +1,29 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Output Debug
+      uses: hmarr/debug-action
+    - name: Checkout 
+      uses: actions/checkout@v1
+    - name: Installing PHP
+      uses: shivammathur/setup-php@master
+      with:
+        php-version: 7.3
+        extension-csv: mbstring, xdebug #optional
+    - name: Check PHP and Composer Version 
+        run: php -v && composer -V
+    - name: Check PHP Extensions
+      run: php -m
+    - name: Composer install
+      run: composer install
+    - name: Run a multi-line script
+      run: |
+        echo Add other actions to build,
+        echo test, and deploy your project.
