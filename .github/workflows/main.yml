@@ -34,6 +34,7 @@ jobs:
       run: |
         NAME="../$(basename $PWD)-${GITHUB_SHA}.tar.xz"
         echo $NAME
+        rm -fr .git/
         tar cvfJ $NAME --exclude-vcs .    # --exclude-from=.gitignore
         ln $NAME ../archive.xz            # makes it easier for artifacts
     - name: Show files
@@ -46,7 +47,7 @@ jobs:
 #        path: ../archive.xz
     - uses: darkflib/s3-sync-action@master
       with:
-        args: --exclude ".git*" --endpoint-url=https://s3.eu-central-1.wasabisys.com  --acl public-read --follow-symlinks --delete
+        args:  --endpoint-url=https://s3.eu-central-1.wasabisys.com  --acl public-read --follow-symlinks --delete
       env:
         SOURCE_DIR: './'
         AWS_REGION: 'eu-central-1'
