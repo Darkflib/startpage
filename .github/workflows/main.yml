@@ -30,3 +30,8 @@ jobs:
         du -sh
     - name: Show Installed Packages
       run: apt list --installed
+    - name: Create archive
+      run: |
+        NAME="$(basename $PWD)"
+        tar cvfJ ../${NAME}-{{ GITHUB_SHA }}.tar.xz --exclude-vcs . # --exclude-from=$PROJECT/.gitignore
+        
