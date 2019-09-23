@@ -15,10 +15,10 @@ jobs:
       with:
         php-version: 7.3
         extension-csv: mbstring, xdebug
-    - name: Check PHP and Composer Version 
-      run: php -v && composer -V
-    - name: Check PHP Extensions
-      run: php -m
+#    - name: Check PHP and Composer Version 
+#      run: php -v && composer -V
+#    - name: Check PHP Extensions
+#      run: php -m
     - name: Composer install
       run: composer install
     - name: Show Environment
@@ -28,8 +28,8 @@ jobs:
         pwd
         find .
         du -sh
-    - name: Show Installed Packages
-      run: apt list --installed
+#    - name: Show Installed Packages
+#      run: apt list --installed
     - name: Create archive
       run: |
         NAME="../$(basename $PWD)-${GITHUB_SHA}.tar.xz"
