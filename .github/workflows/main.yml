@@ -46,10 +46,10 @@ jobs:
 #        path: ../archive.xz
     - uses: jakejarvis/s3-sync-action@master
       with:
-        args: --endpoint-url=${{ secrets.AWS_S3_ENDPOINT }}  # --acl public-read --follow-symlinks --delete
+        args: --exclude ".git*" --endpoint-url=https://s3.eu-central-1.wasabisys.com  --acl public-read --follow-symlinks --delete
       env:
         SOURCE_DIR: './'
         AWS_REGION: 'eu-central-1'
-        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+        AWS_S3_BUCKET: 'wwff-sites/startpage'
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
