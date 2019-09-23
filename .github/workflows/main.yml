@@ -35,4 +35,7 @@ jobs:
         NAME="$(basename $PWD)"
         echo $NAME
         tar cvfJ ../${NAME}-${GITHUB_SHA}.tar.xz --exclude-vcs . # --exclude-from=$PROJECT/.gitignore
-        
+    - name: Show files
+      run: |
+        ls -la ..
+        du -sh ../*
