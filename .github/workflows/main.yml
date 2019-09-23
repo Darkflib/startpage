@@ -33,5 +33,6 @@ jobs:
     - name: Create archive
       run: |
         NAME="$(basename $PWD)"
-        tar cvfJ ../${NAME}-{{ GITHUB_SHA }}.tar.xz --exclude-vcs . # --exclude-from=$PROJECT/.gitignore
+        echo $NAME
+        tar cvfJ ../${NAME}-${GITHUB_SHA}.tar.xz --exclude-vcs . # --exclude-from=$PROJECT/.gitignore
         
