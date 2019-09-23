@@ -32,10 +32,15 @@ jobs:
       run: apt list --installed
     - name: Create archive
       run: |
-        NAME="$(basename $PWD)"
+        NAME="../$(basename $PWD)-${GITHUB_SHA}.tar.xz"
         echo $NAME
-        tar cvfJ ../${NAME}-${GITHUB_SHA}.tar.xz --exclude-vcs . # --exclude-from=$PROJECT/.gitignore
+        tar cvfJ $NAME --exclude-vcs . # --exclude-from=.gitignore
+        ln $NAME archive.xz
     - name: Show files
       run: |
         ls -la ..
         du -sh ../*
+    - uses: actions/upload-artifact@master
+      with:
+        name: archive
+        path: ../archive.xz
