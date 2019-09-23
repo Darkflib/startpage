@@ -23,5 +23,10 @@ jobs:
       run: composer install
     - name: Show Environment
       run: env |sort
+    - name: Show files
+      run: |
+        pwd
+        find .
+        du -sh
     - name: Show Installed Packages
       run: apt list --installed
