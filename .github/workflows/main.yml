@@ -47,7 +47,7 @@ jobs:
 #        path: ../archive.xz
     - uses: darkflib/s3-sync-action@master
       with:
-        args:  --endpoint-url=https://s3.eu-central-1.wasabisys.com  --acl public-read --follow-symlinks --delete
+        args:  --endpoint-url=https://s3.eu-central-1.wasabisys.com --follow-symlinks --delete
       env:
         SOURCE_DIR: './'
         AWS_REGION: 'eu-central-1'
