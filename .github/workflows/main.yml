@@ -35,8 +35,18 @@ jobs:
         NAME="../$(basename $PWD)-${GITHUB_SHA}.tar.xz"
         echo $NAME
         rm -fr .git/
-        tar cvfJ $NAME --exclude-vcs .    # --exclude-from=.gitignore
-        ln $NAME ../archive.xz            # makes it easier for artifacts
+        tar cvfJ $NAME --exclude-vcs . 
+        ln $NAME ../$(basename $PWD).xz            
+    - name: Upload Archive
+      uses: darkflib/s3-sync-action@master
+      with:
+        args:  --endpoint-url=https://s3.eu-central-1.wasabisys.com --follow-symlinks
+      env:
+        SOURCE_DIR: '../*.xz'
+        AWS_REGION: 'eu-central-1'
+        AWS_S3_BUCKET: 'wwff-deploy/startpage'
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     - name: Show files
       run: |
         ls -la ..
